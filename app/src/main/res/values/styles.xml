@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.MaterialComponents" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#34A853</item>
+        <item name="colorPrimaryVariant">#34A853</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+</resources>
