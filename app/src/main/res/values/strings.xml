@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">TaskTracker</string>
+    <string name="app_namekkkkk">TaskTracker</string>
+
+
+    <array name="alarm_repeat">
+        <item>Daily</item>
+        <item>Does not repeat</item>
+        <item>Weekly on Tuesday</item>
+        <item>Every weekday (Monday to Friday)</item>
+        <item>Monthly on first Tuesday</item>
+        <item>Monthly on last Tuesday</item>
+        <item>Annually on july 26</item>
+        <item>Custom…</item>
+    </array>
+
+    <string-array name="from_to_time">
+        <item>11:00am</item>
+        <item>11:15am</item>
+        <item>11:30am</item>
+        <item>11:45am</item>
+        <item>12:00am</item>
+        <item>12:15am</item>
+        <item>12:30am</item>
+        <item>Custom…</item>
+    </string-array>
+
+
+    <string-array name="counter">
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
 </resources>
