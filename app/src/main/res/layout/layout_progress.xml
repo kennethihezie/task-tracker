@@ -4,19 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/_16sdp"
-    android:paddingTop="@dimen/_16sdp">
+   android:padding="@dimen/_16sdp">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        android:rotation="-90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+ <ProgressBar
+     android:id="@+id/progress_bar"
+     style="@style/my_progressbar_style_ver"
+     android:layout_width="@dimen/_5sdp"
+     android:layout_height="@dimen/_60sdp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent" />
+
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="8dp"
+     android:text="Task 1"
+     android:textAppearance="@style/EditTextAppearance"
+     app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+     app:layout_constraintStart_toStartOf="@+id/progress_bar"
+     app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

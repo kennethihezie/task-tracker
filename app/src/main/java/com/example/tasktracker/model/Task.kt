@@ -3,6 +3,8 @@ package com.example.tasktracker.model
 import io.realm.RealmModel
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.sql.Timestamp
+import java.util.*
 
 open class Task(
     @PrimaryKey
@@ -26,5 +28,7 @@ open class Task(
 
     var status: String? = null,
 
-    var backGroundColor: String? = null
+    var backGroundColor: Int? = null,
+
+    var timestamp: Long? = null
 ) : RealmObject()

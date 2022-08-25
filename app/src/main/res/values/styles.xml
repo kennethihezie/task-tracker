@@ -46,4 +46,8 @@
         <item name="fontFamily">@font/product_sans_regular</item>
     </style>
 
+    <style name="my_progressbar_style_ver" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progressbar_ver</item>
+    </style>
+
 </resources>

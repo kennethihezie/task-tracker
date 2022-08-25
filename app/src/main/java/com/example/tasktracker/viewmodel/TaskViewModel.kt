@@ -7,23 +7,35 @@ import io.realm.RealmModel
 import io.realm.RealmResults
 
 class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
-    fun getTasks(): LiveData<RealmResults<Task>> {
-        return taskRepository.getTasks()
+    fun getTasksByAscending(): LiveData<RealmResults<Task>> {
+        return taskRepository.getTasksByAscending()
+    }
+
+    fun getTasksByDescending(): LiveData<RealmResults<Task>> {
+        return taskRepository.getTasksByDescending()
+    }
+
+    fun getTasksByTimeStamp(): LiveData<RealmResults<Task>> {
+        return taskRepository.getTasksByTimeStamp()
     }
 
     fun getTaskById(id: String): Task?{
         return taskRepository.getTaskById(id)
     }
 
-    fun createOrUpdateTask(task: Task){
-        taskRepository.createOrUpdateTask(task)
+    fun createTask(task: Task){
+        taskRepository.createTask(task)
+    }
+
+    fun updateTask(task: Task){
+        taskRepository.updateTask(task)
     }
 
     fun <T : RealmModel> copyFromRealm(realmObject: T): T?{
         return taskRepository.copyFromRealm(realmObject)
     }
 
-    fun deleteTask(id: String){
+    fun deleteTask(id: Int){
         taskRepository.deleteTask(id)
     }
 }

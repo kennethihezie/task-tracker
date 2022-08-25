@@ -4,15 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/big_rectangle.xml" value="0.1885" />
+        <entry key="app/src/main/res/drawable/custom_progress_bar.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/ic_user_profile.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/line.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/progress_background.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/progressbar_ver.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/small_rectangle.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/spinner_background.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/spinner_background_color.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/task_background.xml" value="0.1715" />
         <entry key="app/src/main/res/font/poppins.xml" value="0.10648148148148148" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/layout_progress.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_progress.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_task.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu_nav.xml" value="0.1" />
       </map>

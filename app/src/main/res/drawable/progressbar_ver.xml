@@ -1,0 +1,38 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="50dip"/>
+            <solid
+                android:color="#979798"/>
+        </shape>
+    </item>
+
+    <item android:id="@android:id/progress">
+
+        <scale
+            android:scaleGravity="bottom"
+            android:scaleHeight="100%"
+            >
+            <shape>
+                <corners android:radius="50dip"/>
+                <solid
+                    android:color="@color/light_green"/>
+            </shape>
+        </scale>
+        <!--You can only choose one of scale and clip, one is zooming and the other is cutting, the end shape of the progress bar is different-->
+        <!-- <clip
+             android:gravity="bottom"
+             android:clipOrientation="vertical"
+             >
+             <shape>
+                 <corners android:radius="50dip"/>
+                 <gradient
+                     android:angle="270"
+                     android:centerY="0.75"
+                     android:endColor="#165CBC"
+                     android:startColor="#85B0E9"/>
+             </shape>
+         </clip>-->
+
+    </item>
+</layer-list>

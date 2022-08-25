@@ -24,5 +24,6 @@ class TaskProgressAdapter(private val context: Context) : RecyclerView.Adapter<T
 
     internal fun setTasks(list: List<Task>){
         this.tasks = list
+        notifyDataSetChanged()
     }
 }

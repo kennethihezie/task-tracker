@@ -1,11 +1,9 @@
 package com.example.tasktracker.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.tasktracker.utils.DBconstants
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.RealmModel
-import io.realm.RealmResults
+import io.realm.*
 import io.realm.kotlin.deleteFromRealm
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,23 +11,27 @@ import kotlinx.coroutines.launch
 
 class TaskDao{
     private val realm: Realm by lazy {
-        Realm.getDefaultInstance().apply {
-            isAutoRefresh = true
-        }
+        Realm.getDefaultInstance()
     }
 
-    fun createOrUpdateTask(task: Task){
+    fun createTask(task: Task){
         CoroutineScope(Dispatchers.Main).launch {
             val index = realm.where(Task::class.java).max(DBconstants.TASK_ID)
             var primaryKey = 1
-            if(index != null && task.taskId == null){
+            if(index != null){
                 primaryKey = index.toInt() + 1
-                task.taskId = primaryKey
             }
+            task.taskId = primaryKey
         }.invokeOnCompletion {
             realm.executeTransactionAsync {
                 it.insertOrUpdate(task)
             }
+        }
+    }
+
+    fun updateTask(task: Task){
+        realm.executeTransactionAsync {
+            it.insertOrUpdate(task)
         }
     }
 
@@ -38,18 +40,26 @@ class TaskDao{
     }
 
 
-    fun getTasks(): LiveData<RealmResults<Task>> {
-        return realm.where(Task::class.java).findAllAsync().asLiveData()
+    fun getTasksByAscending(): LiveData<RealmResults<Task>>{
+        return realm.where(Task::class.java).sort(DBconstants.TASK_ID, Sort.ASCENDING).findAllAsync().asLiveData()
+    }
+
+    fun getTasksByDescending(): LiveData<RealmResults<Task>>{
+        return realm.where(Task::class.java).sort(DBconstants.TASK_ID, Sort.DESCENDING).findAllAsync().asLiveData()
+    }
+
+    fun getTasksByTimeStamp(): LiveData<RealmResults<Task>>{
+        return realm.where(Task::class.java).sort("timestamp", Sort.DESCENDING).findAllAsync().asLiveData()
     }
 
     fun getTaskById(id: String): Task? {
         return realm.where(Task::class.java).equalTo(DBconstants.TASK_ID, id).findFirstAsync()
     }
 
-    fun deleteTask(id: String){
-        realm.executeTransactionAsync {
-            val task = it.where(Task::class.java).equalTo(DBconstants.TASK_ID, id).findFirstAsync()
-            task.deleteFromRealm()
+    fun deleteTask(id: Int){
+            realm.executeTransactionAsync {
+                val task = it.where(Task::class.java).equalTo(DBconstants.TASK_ID, id).findFirst()
+                task?.deleteFromRealm()
         }
     }
 }
