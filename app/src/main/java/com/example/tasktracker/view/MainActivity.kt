@@ -82,8 +82,23 @@ class MainActivity : AppCompatActivity() {
         binding.tvTime.text = Helper.getCurrentTime()
 
         taskViewModel.getTasksByDescending().observe(this, Observer { tasks ->
-            adapter.setTasks(tasks)
-            taskProgressAdapter.setTasks(tasks)
+            if(!tasks.isNullOrEmpty()){
+                binding.emptyState.visibility = View.GONE
+                binding.taskCreatedTv.visibility = View.VISIBLE
+                binding.sort.visibility = View.VISIBLE
+                binding.taskRv.visibility = View.VISIBLE
+                binding.taskProgressRv.visibility = View.VISIBLE
+
+                adapter.setTasks(tasks)
+                taskProgressAdapter.setTasks(tasks)
+            } else {
+                binding.emptyState.visibility = View.VISIBLE
+                binding.taskCreatedTv.visibility = View.GONE
+                binding.sort.visibility = View.GONE
+                binding.taskRv.visibility = View.GONE
+                binding.taskProgressRv.visibility = View.GONE
+            }
+
         })
 
         ArrayAdapter.createFromResource(this, R.array.alarm_repeat, android.R.layout.simple_spinner_item).also {
@@ -240,20 +255,24 @@ class MainActivity : AppCompatActivity() {
         binding.etTask.backgroundTintList = ContextCompat.getColorStateList(this, task.backGroundColor!!)
         binding.spinnerRepeat.setSelection(this.resources.getStringArray(R.array.alarm_repeat).indexOf(task.repeat), true)
         binding.spinnerTimeDurationFrom.setSelection(this.resources.getStringArray(R.array.from_to_time).indexOf(task.timerFrom), true)
-        binding.spinnerTimeDurationTo.setSelection(this.resources.getStringArray(R.array.from_to_time).indexOf(task.timerFrom), true)
-        binding.spinnerCounter.setSelection(this.resources.getIntArray(R.array.counter).indexOf(task.counter!!), true)
+        binding.spinnerTimeDurationTo.setSelection(this.resources.getStringArray(R.array.from_to_time).indexOf(task.timerTo), true)
 
+        Log.d("DATA", "${this.resources.getIntArray(R.array.counter).indexOf(task.counter!!)}")
         when(task.counter!!){
             25 -> {
+                binding.spinnerCounter.setSelection(0, true)
                 binding.spinnerCounter.backgroundTintList = ContextCompat.getColorStateList(this@MainActivity, R.color.light_red)
             }
             50 -> {
+                binding.spinnerCounter.setSelection(1, true)
                 binding.spinnerCounter.backgroundTintList = ContextCompat.getColorStateList(this@MainActivity, R.color.light_red)
             }
             75 -> {
+                binding.spinnerCounter.setSelection(2, true)
                 binding.spinnerCounter.backgroundTintList = ContextCompat.getColorStateList(this@MainActivity, R.color.light_green)
             }
             100 -> {
+                binding.spinnerCounter.setSelection(3, true)
                 binding.spinnerCounter.backgroundTintList = ContextCompat.getColorStateList(this@MainActivity, R.color.light_green)
             }
         }

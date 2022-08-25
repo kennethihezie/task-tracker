@@ -69,7 +69,7 @@ tools:context=".view.MainActivity">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingTop="@dimen/_4sdp"
@@ -78,7 +78,7 @@ tools:context=".view.MainActivity">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:visibility="visible">
 
                     <TextView
@@ -355,10 +355,11 @@ tools:context=".view.MainActivity">
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/task_created_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Task Created"
+                        android:visibility="gone"
                         android:textAppearance="@style/EditTextAppearance"
                         android:textSize="@dimen/_12sdp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -366,6 +367,7 @@ tools:context=".view.MainActivity">
 
                     <ImageView
                         android:id="@+id/sort"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -377,10 +379,10 @@ tools:context=".view.MainActivity">
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/task_created_tv"
                         tools:listitem="@layout/layout_task" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -389,11 +391,23 @@ tools:context=".view.MainActivity">
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/task_rv"
                         tools:listitem="@layout/layout_progress" />
+
+                    <TextView
+                        android:id="@+id/empty_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="You don't have any task. Click the + to create a task"
+                        android:textAppearance="@style/EditTextAppearance"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -908,7 +922,7 @@ tools:context=".view.MainActivity">
                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                        <TextView
-                           android:id="@+id/textView8"
+                           android:id="@+id/task_created_tv"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Task Created"
@@ -933,7 +947,7 @@ tools:context=".view.MainActivity">
                            android:visibility="visible"
                            app:layout_constraintEnd_toEndOf="parent"
                            app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toBottomOf="@+id/textView8"
+                           app:layout_constraintTop_toBottomOf="@+id/task_created_tv"
                            tools:listitem="@layout/layout_task" />
 
                        <androidx.recyclerview.widget.RecyclerView
